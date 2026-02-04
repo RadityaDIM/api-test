@@ -23,14 +23,15 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
         ]);
-        return new UserResource($user);
+
+        return new UserResource($user); // Pastikan ada return ini
     }
 
     /**
